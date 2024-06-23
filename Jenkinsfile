@@ -9,7 +9,7 @@ pipeline {
     }
     environment{
         def appVersion = '' //variable declaration
-        nexusUrl = 'nexus.daws78s.online:8081'
+        nexusUrl = 'nexus.chavavenkat.online:8081'
     }
     stages {
         stage('read the version'){
@@ -52,16 +52,16 @@ pipeline {
                 }
             }
         }
-        stage('Deploy'){
-            steps{
-                script{
-                    def params = [
-                        string(name: 'appVersion', value: "${appVersion}")
-                    ]
-                    build job: 'frontend-deploy', parameters: params, wait: false
-                }
-            }
-        }
+        // stage('Deploy'){
+        //     steps{
+        //         script{
+        //             def params = [
+        //                 string(name: 'appVersion', value: "${appVersion}")
+        //             ]
+        //             build job: 'frontend-deploy', parameters: params, wait: false
+        //         }
+        //     }
+        // }
     }
     post { 
         always { 
